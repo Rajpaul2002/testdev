@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Form</title>
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- <div class="container">
+        <h1>Did you fill the previous week's form (Monday to Friday)?</h1>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+        
+        <div id="daysForm" class="hidden">
+            <h2>Select the days you missed:</h2>
+            <form id="weekDaysForm">
+            </form>
+            <button id="submitDaysButton" class="hidden">Submit</button>
+        </div>
+
+        <div id="selectedDays" class="hidden">
+            <h2>You selected the following days:</h2>
+            <ul id="daysList"></ul>
+        </div>
+    </div> -->
+    <div class="container">
+        <div class="background"></div> <!-- Background div for blur effect -->
+    <div class="card">
+        <div class="question">Do you want to fill out the timesheet for last week?</div>
+        <button class="button yes" id="yesButton">Yes</button>
+        <button class="button no" id="noButton">No</button>
+    </div>
+    <div id="daysForm" class="hidden">
+        <h2>Select the days you missed:</h2>
+        <form id="weekDaysForm">
+        </form>
+        <button id="submitDaysButton" class="hidden">Submit</button>
+    </div>
+
+    <div id="selectedDays" class="hidden">
+        <h2>You selected the following days:</h2>
+        <ul id="daysList"></ul>
+    </div>
+    </div>
+    
+    <script src="script.js"></script>   
+</body>
+</html>
