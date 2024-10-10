@@ -33,34 +33,6 @@ function downloadFile(filedata) {
   document.body.removeChild(link);
 }
 
-async function saveFile(data) {
-  try {
-    // Request permission to save a file
-    const handle = await window.showSaveFilePicker({
-      suggestedName: "output.json",
-      types: [
-        {
-          description: "JSON Files",
-          accept: { "application/json": [".json"] },
-        },
-      ],
-    });
-
-    // Create a writable stream
-    const writable = await handle.createWritable();
-
-    // Write data to the file (convert object to JSON)
-    await writable.write(JSON.stringify(data, null, 2));
-
-    // Close the writable stream
-    await writable.close();
-
-    console.log("File saved successfully");
-  } catch (err) {
-    console.error("File save was cancelled or failed:", err);
-  }
-}
-
 function frameCalender() {
   const today = new Date();
   const currentYear = today.getFullYear();
@@ -71,9 +43,12 @@ function frameCalender() {
     .toISOString()
     .split("T")[0];
 
-    flatpickrInstance = flatpickr("#daterange", {
+  flatpickrInstance = flatpickr("#daterange", {
     mode: "multiple", // Enables date range selection
     dateFormat: "Y-m-d",
+    disable: [
+      (date) => date.getDay() === 0 || date.getDay() === 6, // Disable weekends
+    ],
     minDate: firstDayOfMonth, // Set min date to the first day of the current month
     onChange: function (selectedDates, dateStr, instance) {
       selectedDateRange = dateStr; // Store the selected date range
@@ -100,6 +75,8 @@ function showModal() {
     );
     return false;
   }
+  $(".flatpickr-prev-month").addClass("hidden")
+  $(".flatpickr-next-month").addClass("hidden")
 
   // Display the selected dates in the modal
   let datesDisplay = selectedDaysArr
@@ -117,8 +94,11 @@ function showModal() {
 
 // Function to close the modal
 function closeModal() {
+  $(".flatpickr-prev-month").removeClass("hidden")
+  $(".flatpickr-next-month").removeClass("hidden")
   document.getElementById("confirmationModal").style.display = "none";
 }
+
 
 // Function to submit the form after confirmation
 function submitForm() {
