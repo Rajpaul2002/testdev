@@ -100,6 +100,7 @@ function closeModal() {
 }
 
 
+
 // Function to submit the form after confirmation
 function submitForm() {
   DevExpress.ui.notify(
