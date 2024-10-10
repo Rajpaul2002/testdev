@@ -99,6 +99,7 @@ function closeModal() {
   document.getElementById("confirmationModal").style.display = "none";
 }
 
+
 // Function to submit the form after confirmation
 function submitForm() {
   DevExpress.ui.notify(
